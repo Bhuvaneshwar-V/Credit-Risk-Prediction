@@ -27,7 +27,7 @@ with open(os.path.join(weights_folder, encoder_file_name), 'rb') as encoder_file
 # Home route
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 # Predict route
 @app.route('/predict', methods=['POST'])
@@ -62,7 +62,7 @@ def predict():
 
     # Display result
     result = "Risk of Default" if prediction == 1 else "No Risk of Default"
-    return render_template('index.html', result=result)
+    return render_template('home.html', result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)
