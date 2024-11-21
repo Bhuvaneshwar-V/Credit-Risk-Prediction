@@ -145,15 +145,39 @@
                     </div>
 
                     <div class="custom-btn-wrapper">
-                        <button class="custom-btn" otype="submit">PREDICT</button>
+                        <button class="custom-btn" type="submit" id="pop-btn">PREDICT</button>
                     </div>
-                    {% if result %}
+                    <!--{% if result %}
                         <div class="custom-form-result">
                             <h3 class="custom-form-result"> Prediction: {{ result }} </h3>
                         </div>
-                    {% endif %}
+                    {% endif %}-->
                 </div>
             </div>
         </form>
+
+        <div class="popup-overlay" id="popup-overlay"></div>
+        <div class="popup" id="popup">
+            <p id="result-text">{{ result }}</p>
+            <button class="custom-btn" onclick="closePopup()">Close</button>
+        </div>
+
+        <script>
+            // Function to show the popup after page reload
+            window.onload = function () {
+                const result = document.getElementById("result-text").textContent.trim();
+                if (result) {
+                    document.getElementById("popup-overlay").classList.add("show");
+                    document.getElementById("popup").classList.add("show");
+                }
+            };
+    
+            // Function to close the popup
+            function closePopup() {
+                document.getElementById("popup-overlay").classList.remove("show");
+                document.getElementById("popup").classList.remove("show");
+                window.location.href = "/";
+            }
+        </script>   
     </body>
   </html>
